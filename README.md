@@ -16,24 +16,24 @@ This project was completed to show mastery of basic api requests using node.js. 
 
    - fs (a global package)
 
-Utilizing the packages above, the application does the following:
+Utilizing the packages above, the application does the following.
 
-    - Displays the last 20 tweets of [@MilkIsSpicy](https://twitter.com/MilkIsSpicy) using the command:
-    ```
-    node liri.js my-tweets
-    ```
+    - Displays the last 20 tweets of [@MilkIsSpicy](https://twitter.com/MilkIsSpicy) using the command: `node liri.js my-tweets`
 
     - Finds music information using the spotify api with:
+
     ```
     node liri.js spotify-this-song <song title>
     ```
 
     - Finds movie information using the OMBD api with:
+
     ```
     node liri.js movie-this <movie title>
     ```
 
     - Do a random action from the random.txt text file with:
+
     ```
     node liri.js do-what-it-says
     ```
