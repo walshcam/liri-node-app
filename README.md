@@ -1,4 +1,5 @@
 **Created By:** Cameron Walsh
+
 **Turned In As Homework On:** April 23rd, 2018
 
 
@@ -16,11 +17,14 @@ This project was completed to show mastery of basic api requests using node.js. 
 
    - fs (a global package)
 
+**What this product does**
+
 Utilizing the packages above, the application does the following.
 
-    - Displays the last 20 tweets of [@MilkIsSpicy](https://twitter.com/MilkIsSpicy) using the command: `node liri.js my-tweets`
+- Displays the last 20 tweets of [@MilkIsSpicy](https://twitter.com/MilkIsSpicy) using the command: 
+```node liri.js my-tweets```
 
-    - Finds music information using the spotify api with:
+- Finds music information using the spotify api with:
 
     ```
     node liri.js spotify-this-song <song title>
