@@ -4,6 +4,7 @@ require("dotenv").config()
 let keys = require('./keys.js');
 let Twitter = require('twitter');
 let Spotify = require('node-spotify-api');
+var fs = require("fs");
 
 //Global Variables
 // let spotify = new Spotify(keys.spotify);
@@ -24,23 +25,30 @@ let spotify = new Spotify({
     secret: keys.secret
   });
 
+//Run initial Switch Statement
+switchStatement()
+
 //Switch statement To Turn Node.js input into action
-switch (action) {
-    case "my-tweets":
-        myTweets();
-        break;
+function switchStatement() {
 
-    case "spotify-this-song":
-        spotifyThisSong();
-        break;
+    switch (action) {
+        case "my-tweets":
+            myTweets();
+            break;
 
-    case "movie-this":
-        movieThis();
-        break;
+        case "spotify-this-song":
+            spotifyThisSong();
+            break;
 
-    case "do-what-it-says":
-        doWhatItSays();
-        break;
+        case "movie-this":
+            movieThis();
+            break;
+
+        case "do-what-it-says":
+            doWhatItSays();
+            break;
+    }
+
 }
 
 //Twitter Function
@@ -97,10 +105,22 @@ function spotifyThisSong() {
 
 function movieThis() {
 
+    fs.readFile("random.txt","utf8", function (error, data) {
+
+    })
 };
 
 //Do What It Says
 
 function doWhatItSays() {
+
+    fs.readFile("random.txt","utf8", function (error, data) {
+        
+        if (error) {
+            return console.log(error);
+        }
+
+        let newInput = data.split(",")
+    })
 
 };
