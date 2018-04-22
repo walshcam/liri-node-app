@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/walshcam/liri-node-app#readme",
   "dependencies": {
-    "repeat": "0.0.6"
+    "dotenv": "^5.0.1",
+    "node-spotify-api": "^1.0.7",
+    "repeat": "0.0.6",
+    "request": "^2.85.0",
+    "spotify-web-api-node": "^3.0.0",
+    "twitter": "^1.7.1"
   }
 }
