@@ -1,5 +1,5 @@
 //Required Variables
-require("dotenv").config()
+require("dotenv").config();
 
 let request = require('request');
 let Twitter = require('twitter');
@@ -19,16 +19,16 @@ let action = processArray[0];
 
 //Twitter required variables
 let client = new Twitter({
-    consumer_key: keys.consumer_key,
-    consumer_secret: keys.consumer_secret,
-    access_token_key: keys.access_token_key,
-    access_token_secret: keys.access_token_secret
+    consumer_key: keys.twitter.consumer_key,
+    consumer_secret: keys.twitter.consumer_secret,
+    access_token_key: keys.twitter.access_token_key,
+    access_token_secret: keys.twitter.access_token_secret
   });
 
 //Spotify required variables
 let spotify = new Spotify({
-    id: keys.id,
-    secret: keys.secret
+    id: keys.spotify.id,
+    secret: keys.spotify.secret
   });
 
 //Run initial Switch Statement
@@ -71,7 +71,12 @@ function myTweets() {
       }
       if (!error) {
         console.log("At least I got here")
-        console.log(tweets);
+        for (let i = 0; i <tweets.length; i++) {
+            console.log("=======================================");
+            console.log(" ")
+            console.log(tweets[i].text);
+            console.log(" ");
+        }
       }
     });
 };
@@ -80,28 +85,46 @@ function myTweets() {
 
 function spotifyThisSong() {
     
-    let query;
+    let query = "";
 
     if (processArray[1] === undefined) {
-        query = 'The sign by Ace of Base'
+        query = 'The sign Ace of Base'
     }
     else {
         for (let i = 1; i < processArray.length; i++) {
             query = query + " " + processArray[i];
         }
-        console.log(query)
+        query = query.trim();
     }
+
+    console.log(query);
 
     let params = {
         type: "track",
-        query: query
+        query: query,
+        limit: 1
     }
     spotify.search(params, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
         if (!err){
-            console.log(data); 
+            //shortcut the paths for spotify
+            let spotifyPath = data.tracks.items[0]
+
+            //allow command prompt to show multiple artists
+            let artists = spotifyPath.artists[0].name;
+            if (spotifyPath.artists.length > 1) {
+                for (let i = 1; i < spotifyPath.artists.length; i++) {
+                    artists = artists + ", " + spotifyPath.artists[i].name;
+                }
+            }
+            artists = artists.trim();
+
+            console.log("The Artist: " + artists)
+            console.log("The Song Name: " + spotifyPath.name); 
+            console.log("Song Preview: " + spotifyPath.preview_url);
+            console.log("The Album Name: " + spotifyPath.album.name);  
         }
     });
 
@@ -111,7 +134,7 @@ function spotifyThisSong() {
 
 function movieThis() {
 
-    let query;
+    let query = "";
 
     if (processArray[1] === undefined) {
         query = 'Mr. Nobody'
@@ -120,8 +143,11 @@ function movieThis() {
         for (let i = 1; i < processArray.length; i++) {
             query = query + " " + processArray[i];
         }
-        console.log(query)
+        
+        query = query.trim();
     }
+
+    console.log(query)
 
     request(`http://www.omdbapi.com/?t=${query}&y=&plot=short&apikey=trilogy`, function(error, response, body) {
 
@@ -133,9 +159,9 @@ function movieThis() {
           console.log("The movie's title is: " + JSON.parse(body).Title);
           console.log("The year this movie was released is: " + JSON.parse(body).Year);
           console.log("The movie's IMDB rating is: " + JSON.parse(body).imdbRating);
-          console.log("The movie's Rotton Tomatoes rating is: " + JSON.parse(body).Ratings[2]);
+          console.log("The movie's Rotton Tomatoes rating is: " + JSON.parse(body).Ratings[1].Value);
           console.log("The movie was produced in: " + JSON.parse(body).Country);
-          console.log("The language this movie was made in: " + JSON.parse(body).Language);
+          console.log("The languages this movie is available in: " + JSON.parse(body).Language);
           console.log("Plot: " + JSON.parse(body).Plot);
           console.log("The movie's actors are: " + JSON.parse(body).Actors);
         }
