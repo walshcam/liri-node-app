@@ -1,15 +1,21 @@
 //Required Variables
 require("dotenv").config()
 
-let keys = require('./keys.js');
+let request = require('request');
 let Twitter = require('twitter');
 let Spotify = require('node-spotify-api');
-var fs = require("fs");
+let fs = require("fs");
+let keys = require('./keys.js');
 
 //Global Variables
-// let spotify = new Spotify(keys.spotify);
 
-let action = process.argv[2];
+let processArray = [];
+
+for (i = 2; i < process.argv.length; i++) {
+    processArray.push(process.argv[i]);
+}
+
+let action = processArray[0];
 
 //Twitter required variables
 let client = new Twitter({
@@ -76,12 +82,12 @@ function spotifyThisSong() {
     
     let query;
 
-    if (process.argv[3] === undefined) {
+    if (processArray[1] === undefined) {
         query = 'The sign by Ace of Base'
     }
     else {
-        for (let i = 3; i < process.argv.length; i++) {
-            query = query + " " + process.argv[i];
+        for (let i = 1; i < processArray.length; i++) {
+            query = query + " " + processArray[i];
         }
         console.log(query)
     }
@@ -105,9 +111,28 @@ function spotifyThisSong() {
 
 function movieThis() {
 
-    fs.readFile("random.txt","utf8", function (error, data) {
+    let query;
 
-    })
+    if (processArray[1] === undefined) {
+        query = 'Mr. Nobody'
+    }
+    else {
+        for (let i = 1; i < processArray.length; i++) {
+            query = query + " " + processArray[i];
+        }
+        console.log(query)
+    }
+
+    request("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy", function(error, response, body) {
+
+        // If the request is successful (i.e. if the response status code is 200)
+        if (!error && response.statusCode === 200) {
+      
+          // Parse the body of the site and recover just the imdbRating
+          // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
+          console.log("The movie's rating is: " + JSON.parse(body).imdbRating);
+        }
+      });
 };
 
 //Do What It Says
@@ -120,7 +145,11 @@ function doWhatItSays() {
             return console.log(error);
         }
 
-        let newInput = data.split(",")
+        processArray = data.split(",")
+
+        action = processArray[0];
+
+        switchStatement()
     })
 
 };
