@@ -25,29 +25,20 @@ Utilizing the packages above, the application does the following.
 ```node liri.js my-tweets```
 
 - Finds music information using the spotify api with:
+```node liri.js spotify-this-song <song title>```
 
-    ```
-    node liri.js spotify-this-song <song title>
-    ```
+- Finds movie information using the OMBD api with:
+```node liri.js movie-this <movie title>```
 
-    - Finds movie information using the OMBD api with:
-
-    ```
-    node liri.js movie-this <movie title>
-    ```
-
-    - Do a random action from the random.txt text file with:
-
-    ```
-    node liri.js do-what-it-says
-    ```
+- Do a random action from the random.txt text file with:
+```node liri.js do-what-it-says```
 
 **How users can get started with the project**
 
 Download the files, download the npm packages, and utilize the terminal to work this project.
 
 ```
-npm i
+npm install
 ```
 
 **Who maintains and contributes to the project**
