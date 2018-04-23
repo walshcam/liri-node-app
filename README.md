@@ -35,7 +35,7 @@ Utilizing the packages above, the application does the following.
 
 A demonstration of the application is shown below:
 
-<img src="Apr-23-2018-4_59-PM.gif" height = "100" alt = "A Demonstration GIF Should Be Here">
+<video src="Apr-23-2018-4_59-PM.gif" height = "800" alt = "A Demonstration GIF Should Be Here">
 
 **How users can get started with the project**
 
