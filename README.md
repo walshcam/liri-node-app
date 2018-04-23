@@ -35,7 +35,7 @@ Utilizing the packages above, the application does the following.
 
 A demonstration of the application is shown below:
 
-![A Demonstration Gif Should Be Here...](Apr-23-2018-4_59-PM.gif){:height="50%" width="50%"}
+![A Demonstration Gif Should Be Here...](Apr-23-2018-4_59-PM.gif?s=200)
 
 **How users can get started with the project**
 
