@@ -35,7 +35,7 @@ Utilizing the packages above, the application does the following.
 
 A demonstration of the application is shown below:
 
-![A Demonstration Gif Should Be Here...](Apr-23-2018-4_59-PM.gif?s=100)
+<img src="Apr-23-2018-4_59-PM.gif" height = "100" alt = "A Demonstration GIF Should Be Here">
 
 **How users can get started with the project**
 
