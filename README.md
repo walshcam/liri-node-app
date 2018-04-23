@@ -33,6 +33,10 @@ Utilizing the packages above, the application does the following.
 - Do a random action from the random.txt text file with:
 ```node liri.js do-what-it-says```
 
+A demonstration of the application is shown below:
+
+![A Demonstration Gif Should Be Here...](Apr-23-2018-4_59-PM.gif)
+
 **How users can get started with the project**
 
 Download the files, download the npm packages, and utilize the terminal to work this project.
